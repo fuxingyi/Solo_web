@@ -24,11 +24,12 @@
 				$.ajax({
 					url : "mytest/testmytest1.do",
 					contentType : "application/json;charset=UTF-8",
-					data : "pView=test2",
-					type : "POST",
+					dataType:'json',
+					data : JSON.stringify(pView), 
+					type : "post",
 					success : function(data)
 					{
-						alert(data);
+						alert(data.hello);
 					},
 					error : function()
 					{
