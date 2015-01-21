@@ -1,0 +1,5 @@
+controller	控制器+服务接口
+service		业务接口+实现
+dao			数据层
+bean		使用到的bean
+test		测试

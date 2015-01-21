@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <script src="js/jquery.js"></script>
+        <script lang="text/javascript">
+        	$(function(){
+        		alert('abc');
+        		
+        	});
+        </script>
+    </head>
+    <body>
+       this is my first html page.
+       <button onclick="testMytest();">testMytest</button>
+       <script>
+       		var pView={
+       				test1:'test1',
+       				test2:'test2',
+       				test3:'test3'
+       		}
+	       function testMytest(){
+				alert('abc');
+				$.ajax({
+					url : "mytest/testmytest1.do",
+					contentType : "application/json;charset=UTF-8",
+					data : "pView=test2",
+					type : "POST",
+					success : function(data)
+					{
+						alert(data);
+					},
+					error : function()
+					{
+						alert('网络请求失败，请重试！');
+					}
+				});
+			}
+       </script>
+    </body>
+</html>
