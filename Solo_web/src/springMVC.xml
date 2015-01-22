@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
-  xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-  xsi:schemaLocation="http://www.springframework.org/schema/aop 
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop 
     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
     http://www.springframework.org/schema/beans 
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
@@ -13,75 +13,62 @@
     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd 
     http://www.springframework.org/schema/tx 
     http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
-  <!-- spring mvc支持注解功能 -->
-  <mvc:annotation-driven />
-  <!-- spring mvc扫描的包路径 -->
-  <context:component-scan base-package="com.solo" />
-  <!-- spring mvc对视图名解析 -->
-  <!--  
-  <bean
-    class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <property name="prefix" value="/WEB-INF/views/" />
-    <property name="suffix" value=".jsp" />
-  </bean>
-	-->
-  <!-- 数据源配置 -->
-  <!-- 
-  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-    destroy-method="close">
-    <property name="driverClassName" value="${pom.jdbc.driver}" />
-    <property name="url" value="${pom.jdbc.url}" />
-    <property name="username" value="${pom.jdbc.username}" />
-    <property name="password" value="${pom.jdbc.password}" />
-    <property name="initialSize" value="10" />
-    <property name="maxActive" value="2000" />
-    <property name="maxWait" value="60000" />
-    <property name="maxIdle" value="20" />
-    <property name="minIdle" value="10" />
-    <property name="defaultAutoCommit" value="true" />
-    <property name="removeAbandoned" value="true" />
-    <property name="removeAbandonedTimeout" value="180" />
-  </bean>
-	 -->
-	 <!--  
-  <bean id="sessionFactory"
-    class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-    <property name="dataSource" ref="dataSource" />
-    <property name="packagesToScan" value="com.yonyou" />
-    <property name="hibernateProperties">
-      <props>
-        <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-        <prop key="hibernate.show_sql">true</prop>
-        <prop key="hibernate.format_sql">true</prop>
-        <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
-         解决MySQL的连接闲置8小时超时问题 
-        <prop key="hibernate.autoReconnect">true</prop>
-        <prop key="hibernate.autoReconnectForPools">true</prop>
-        <prop key="hibernate.is-connection-validation-required">true</prop>
-      </props>
-    </property>
-  </bean>
-	-->
-  <!-- 事务管理器 -->
-  <!--  
-  <bean id="transactionManager"
-    class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-    <property name="sessionFactory" ref="sessionFactory" />
-  </bean>
-  -->
-  <!-- 注册事务注解处理器 -->
-  <tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- spring mvc支持注解功能 -->
+	<mvc:annotation-driven />
+	<!-- spring mvc扫描的包路径 -->
+	<context:component-scan base-package="com.solo" />
+	<!-- spring mvc对视图名解析 -->
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/WEB-INF/views/" /> <property name="suffix" 
+		value=".jsp" /> </bean> -->
+	<!-- 数据源配置 -->
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
+		destroy-method="close"> <property name="driverClassName" value="${pom.jdbc.driver}" 
+		/> <property name="url" value="${pom.jdbc.url}" /> <property name="username" 
+		value="${pom.jdbc.username}" /> <property name="password" value="${pom.jdbc.password}" 
+		/> <property name="initialSize" value="10" /> <property name="maxActive" 
+		value="2000" /> <property name="maxWait" value="60000" /> <property name="maxIdle" 
+		value="20" /> <property name="minIdle" value="10" /> <property name="defaultAutoCommit" 
+		value="true" /> <property name="removeAbandoned" value="true" /> <property 
+		name="removeAbandonedTimeout" value="180" /> </bean> -->
+	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> 
+		<property name="dataSource" ref="dataSource" /> <property name="packagesToScan" 
+		value="com.yonyou" /> <property name="hibernateProperties"> <props> <prop 
+		key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> <prop key="hibernate.show_sql">true</prop> 
+		<prop key="hibernate.format_sql">true</prop> <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop> 
+		解决MySQL的连接闲置8小时超时问题 <prop key="hibernate.autoReconnect">true</prop> <prop 
+		key="hibernate.autoReconnectForPools">true</prop> <prop key="hibernate.is-connection-validation-required">true</prop> 
+		</props> </property> </bean> -->
+	<!-- 事务管理器 -->
+	<!-- <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager"> 
+		<property name="sessionFactory" ref="sessionFactory" /> </bean> -->
+	<!-- 注册事务注解处理器 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
-  <!-- <bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-    <property name="defaultErrorView" value="error"></property>
-    <property name="exceptionAttribute" value="ex"></property>
-    <property name="exceptionMappings">
-      <props>
-        <prop key="IOException">error/ioexp</prop>
-        <prop key="java.sql.SQLException">error/sqlexp</prop>
-      </props>
-    </property>
-  </bean> -->
+	<!-- <bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> 
+		<property name="defaultErrorView" value="error"></property> <property name="exceptionAttribute" 
+		value="ex"></property> <property name="exceptionMappings"> <props> <prop 
+		key="IOException">error/ioexp</prop> <prop key="java.sql.SQLException">error/sqlexp</prop> 
+		</props> </property> </bean> -->
 
-  
+		<!--- StringHttpMessageConverter bean -->
+	<bean id="stringHttpMessageConverter"
+		class="org.springframework.http.converter.StringHttpMessageConverter" />
+		<!--  -->
+	<bean id="mappingJacksonHttpMessageConverter" 
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->   
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean= "mappingJacksonHttpMessageConverter" />
+				<!-- 新增的StringMessageConverter bean -->
+				<ref bean="stringHttpMessageConverter" />
+				<!-- <ref bean= "jsonHttpMessageConverter" /> -->
+				<!-- <ref bean= "formHttpMessageConverter" /> -->
+			</list>
+		</property>
+	</bean>
+
 </beans>
