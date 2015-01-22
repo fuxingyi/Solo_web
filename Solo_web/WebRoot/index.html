@@ -19,17 +19,24 @@
        				test2:'test2',
        				test3:'test3'
        		}
+       		var qView = new Object();
+       		qView['name'] = 'name';
+       		qView['age'] = '44';
+       		qView['test2'] = 'test2'; 
+       		
 	       function testMytest(){
+       			alert(JSON.stringify(pView));
+       			alert(JSON.stringify(qView));
 				alert('abc');
 				$.ajax({
 					url : "mytest/testmytest1.do",
 					contentType : "application/json;charset=UTF-8",
 					dataType:'json',
-					data : JSON.stringify(pView), 
+					data :JSON.stringify(qView), 
 					type : "post",
 					success : function(data)
 					{
-						alert(data.hello);
+						alert(data.age+data.name+data.test2);
 					},
 					error : function()
 					{

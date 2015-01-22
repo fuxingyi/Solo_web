@@ -1,5 +1,7 @@
 package com.solo.controller.test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import net.sf.json.JSONObject;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.solo.bean.PView;
 import com.solo.service.test.IMyTest;
 import com.solo.util.JsonUtil;
 
@@ -24,10 +27,14 @@ public class MyTestCon {
 	
 	@ResponseBody
 	@RequestMapping(value = "/testmytest1.do")
-	public String testMyTest(@RequestBody String qViewStr) throws Exception{
-		Map<String,String> qView =JsonUtil.fromJsonToMap(qViewStr);
-		System.out.println("testMyTest:qView===>"+qView.get("test2")); 
+	public Map<String,Object> testMyTest(@RequestBody Map<String,Object> pView) throws Exception{
+		//Map<String,String> pView =JsonUtil.fromJsonToMap(pViewStr);
+		System.out.println("testMyTest:pView===>"+pView.get("test2")); 
+		List<String> list = new ArrayList<String>();
+		list.add("str1");
+		list.add("str2");
+		pView.put("list", list);
 		
-		return "{\"hello\":\"world\"}";
+		return pView;
 	}
 }
