@@ -39,12 +39,23 @@
 		解决MySQL的连接闲置8小时超时问题 <prop key="hibernate.autoReconnect">true</prop> <prop 
 		key="hibernate.autoReconnectForPools">true</prop> <prop key="hibernate.is-connection-validation-required">true</prop> 
 		</props> </property> </bean> -->
-	<!-- 事务管理器 -->
-	<!-- <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager"> 
-		<property name="sessionFactory" ref="sessionFactory" /> </bean> -->
-	<!-- 注册事务注解处理器 -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
 
+	<!-- Add this tag to enable annotations transactions -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/solo_web"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+		<!--改成你的密码 -->
+	</bean>
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 	<!-- <bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> 
 		<property name="defaultErrorView" value="error"></property> <property name="exceptionAttribute" 
 		value="ex"></property> <property name="exceptionMappings"> <props> <prop 

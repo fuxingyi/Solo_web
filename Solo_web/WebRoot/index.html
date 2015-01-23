@@ -5,7 +5,7 @@
         <script src="js/jquery.js"></script>
         <script lang="text/javascript">
         	$(function(){
-        		alert('abc');
+        		//alert('abc');
         		
         	});
         </script>
@@ -13,6 +13,13 @@
     <body>
        this is my first html page.
        <button onclick="testMytest();">testMytest</button>
+       <button onclick="testMytest2();">testMytest2</button><br/>
+       <a href="html/bootstrap_test1.html">bootstrap_test1.html</a><br/>
+       <a href="html/welcome.html">welcome.html</a><br/>
+       <a href="html/main.html">main.html</a>
+       <table id="mytable">
+       		
+       </table>
        <script>
        		var pView={
        				test1:'test1',
@@ -36,7 +43,19 @@
 					type : "post",
 					success : function(data)
 					{
-						alert(data.age+data.name+data.test2);
+						var array = data.data;
+		    			  var html = '';
+		    			  for(var i=0;i<array.length;i++){
+		    				  var map = array[i];
+		    				  html += "<tr>"+
+		    				  				"<td>"+map.id+"</td>"+
+		    				  				"<td>"+map.name+"</td>"+
+		    				  				"<td>"+map.age+"</td>"+
+		    				  				"<td>"+map.hobby+"</td>"+
+		    				  				"<td>"+map.comment+"</td>"+
+		    				  		  "</tr>";
+		    			  }
+						$("#mytable").append(html);
 					},
 					error : function()
 					{
@@ -44,6 +63,21 @@
 					}
 				});
 			}
+	      function testMytest2(){
+	    	  $.ajax({
+	    		  url:"mytest/testmytest2/2.do",
+	    		  contentType:"application/json;charset=UTF-8",
+	    		  dataType:"json",
+	    		  data :'',
+	    		  type:"post",
+	    		  success :function(data){
+	    			  alert(data);
+	    		  },
+	    		  error :function(e){
+	    			  alert("error:"+e)
+	    		  }
+	    	  });
+	      }
        </script>
     </body>
 </html>
