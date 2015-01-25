@@ -12,18 +12,120 @@
 		  return projectName
 	  }
 	  </script>
+	  
       <!-- 引入 Bootstrap -->
       <link href="/Solo_web/tools/bootstrap/css/bootstrap.css" rel="stylesheet">
       <link href="/Solo_web/tools/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
-      <link href="/Solo_web/css/header.css" rel="stylesheet">
+      <link href="/Solo_web/css/footer.css" rel="stylesheet">
       
       
-      <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+<!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
       <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
       <!--[if lt IE 9]>
          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
       <![endif]-->
+      <style>
+      	#content .slider{width:100%;height:760px;position:relative;margin-top:-20px}
+      	#content .slider-list{width:100%;height:760px}
+		#content .slider-list div{position:absolute;width:100%;height:760px;top:0;left:0;background:#f2f2f2;display:none}
+		#content .slider-list div:first-child{display:block}
+		#content .slider-list div a{display:block;height:760px;width:980px;margin:0 auto}
+		#content .dot-list{position:absolute;bottom:20px;text-align:center;z-index:2;width:100%}
+		#content .dot-list a{display:inline-block;margin-right:10px;width:14px;height:14px;background:url('/Solo_web/img/home-sprite.png') -50px -66px no-repeat;opacity:.3;filter:alpha(opacity=30)}
+		#content .dot-list a:hover,
+		#content .dot-list a.active{opacity:1;filter:alpha(opacity=100)}
+		
+		
+		wrap{position:relative}
+		.form-box{width:290px;height:338px;position:absolute;margin-right:-490px;right:50%;overflow:hidden;top:190px;z-index:2;background:rgba(51,51,51,.7);background:#7f7f7f\9;*background:#7f7f7f;_background:#7f7f7f;border:1px #686868 solid}
+		.form-title{height:39px}
+		.form-title span{cursor:pointer;font-family:Simsan;height:39px;float:left;text-align:center;width:96px;color:#b5b5b5;background:rgba(0,0,0,.3);background:#484949\9;*background:#484949;_background:#484949;font-size:12px;line-height:39px}
+		.form-title span.spread{border:1px #777 dotted;border-top:none;border-bottom:none}
+		.form-title span.cur{background:rgba(51,51,51,0);background:#7f7f7f\9;*background:#7f7f7f;_background:#7f7f7f;color:#fff;font-size:16px;font-family:"Microsoft YaHei"}
+		.form-content{position:relative}
+		.login-box,.register-box{width:260px;height:278px;position:absolute;top:0;padding:20px 15px 0}
+		.candidate,.hunter,.business{position:absolute;width:292px;top:0;left:-584px}
+		.register-box{left:0}.login-box{left:-292px}
+		.form-box .control{margin-bottom:10px}
+		.form-box .control input.text{border:none;width:244px;font-size:12px}
+		.form-box .btn{color:#fff;font-size:22px;font-weight:400;font-family:"Microsoft YaHei";text-align:center;border:1px #6e6e6e solid;width:260px;height:40px;line-height:35px;text-shadow:none;box-shadow:none;padding:0}
+		.form-box .controls{color:#bfbfbf}
+		.register-box .controls{padding:12px 0 0}
+		.register-box .controls label{float:left}
+		.register-box .controls .xieyi{float:left;color:#bfbfbf}
+		.register-box .controls .xieyi:hover{color:#fa0;text-decoration:none}
+		.register-box .controls p{float:right}
+		.register-box .controls a{color:#fa0}
+		.register-box .controls a:hover{color:#fa0;text-decoration:underline}
+		.register-box .control input.span2{width:82px}
+		.register-box .control .validcode{margin:0 10px;position:relative;top:6px}
+		.register-box .control .changecode{color:#bfbfbf}
+		.login-box .controls{padding:8px 0 18px}
+		.login-box .controls label{float:left}
+		.login-box .controls a{float:right;color:#bfbfbf}
+		.login-box .controls a:hover{color:#bfbfbf;text-decoration:underline}
+		.login-box .info-box{color:#bfbfbf;padding:10px 0 0}
+		.login-box .info-box a{color:#61c2f2}
+		.login-box .info-box a:hover{text-decoration:underline}
+		.login-box .connect-login{margin-top:10px;padding-top:5px;border-top:1px #8c8c8c dotted;color:#BFBFBF}
+		.login-box .connect-login a{margin-left:5px;margin-right:0;color:#bfbfbf}
+		.form-box .btn-login{background:#fa0;margin:10px 0 5px 0}
+		.form-box .btn-login:hover{background:#fa9200}
+		.form-box .btn-register{background:#3d9ccc;margin:5px 0 0 0}
+		.form-box .btn-register:hover{background:#3689b3}
+		.login-box .weixin{position:absolute;z-index:1;width:64px;height:49px;left:0;bottom:0;background:url(/r/164123/p/beta2/images/pages/home/home-sprite.png) no-repeat 0 0}
+      
+      
+      
+      	input.text {
+			border: none;
+			width: 244px;
+			font-size: 12px;
+		}
+		input.input-xlarge {
+			height: 30px;
+			padding: 4px 8px;
+			font-size: 16px;
+			line-height: 30px;
+		}
+		.clearfix{*zoom:1}
+		.clearfix:before,.clearfix:after{display:table;line-height:0;content:""}
+		.clearfix:after{clear:both}
+      
+      	.checkboxui{display:inline-block;vertical-align:middle;width:16px;height:16px;line-height:0;font-size:0;background:url('/Solo_web/img/icon_formui.png') no-repeat;margin-right:5px;cursor:pointer}
+		.radioui{background-position:0 -64px}
+		.radioui-checked{background-position:0 -80px}
+		.radioui-disabled{background-position:0 -96px}
+		.radioui-checked-disabled,.radioui-disabled-checked{background-position:0 -114px}
+		.checkboxui{background-position:0 0}
+		.checkboxui-checked{background-position:0 -16px}
+		.checkboxui-disabled{background-position:0 -32px}
+		.checkboxui-checked-disabled,.checkboxui-disabled-checked{background-position:0 -48px}
+		 
+		.validcode{margin:0 10px;position:relative;top:6px}     
+		
+		
+		.copy-footer{clear:both;background:#f6f6f6;margin-top:20px;padding:20px 0;color:#999;text-align:center}
+		
+		
+		.links,.links a{color:#999}
+		.links a:hover{color:#f90}
+		.links .links-wrap{margin-bottom:10px}
+		.links .links-title{width:60px}
+		.links .links-content{width:920px}
+		.links .links-content li{float:left}
+		.links .links-content a{float:left;margin-right:10px;white-space:nowrap}
+		.links .links-content a.red{color:red}
+		.box{padding:30px 0;background:#fff;margin-top:5px}
+		.bg-gray{background-color:#fafafa}
+		.box h2{margin:0 0 20px;height:24px;font-weight:400;line-height:24px;color:#999;font-size:22px;border-left:4px solid #fa9900;padding-left:9px}
+		.box h2 .more{color:#7ab1cc;font-size:12px;line-height:32px}
+		.box h2,
+		#home .box h3{font-family:"微软雅黑"}
+		footer{margin-top:0;background-color:#fff}
+      </style>
+      
    </head>
    <body>
        <!-- Fixed navbar -->
@@ -63,10 +165,10 @@
 	        </div><!--/.nav-collapse -->
 	      </div>
 	    </nav>
-	    
+	    <div id="content">
 	    <div class="slider"> 
 	  		<div class="slider-list">
-		  	  	<div style="background:url('/Solo_web/img/img01.jpg') center 0 no-repeat #0a053d;">
+		  	  	<div style="background:url('/Solo_web/img/img01.jpg') center 0 no-repeat #ffffff;">
 		    		<a href="#"  target="_blank"></a>
 		    	</div>
 		  	  	<div style="background:url('/Solo_web/img/img02.jpg') center 0 no-repeat #8c141a;">
@@ -84,28 +186,246 @@
     		</div>
     		<!-- js 追加 -->
 		  	<div class="dot-list">
-			    <!-- <a href="javascript:;"></a>
+			    <a href="javascript:;" class="active"></a>
 			    <a href="javascript:;"></a>
 			    <a href="javascript:;"></a>
 			    <a href="javascript:;"></a>
-			    <a href="javascript:;"></a> -->
+			    <a href="javascript:;"></a> 
 		  	</div>
     	</div>
-    
-    <!--  
-	  <div class="container theme-showcase" role="main">
-	      
-	      <br/>
-	      <div class="jumbotron">
-	        <h1>Hello, world!</h1>
-	        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+    </div>
+    <div id="login">
+    <div class="wrap">
+	  <div class="form-box">
+	    <div class="form-title">
+	      <span class="" href="javascript:;" data-kind="0">企业客户</span>
+	      <span href="javascript:;" class="spread" data-kind="2">运营人员</span>
+	      <span class="cur" href="javascript:;" data-kind="1">系统人员</span>
+	    </div>
+	    <div data-flag="0" class="form-content">
+
+	      <div style="left: -584px;" class="candidate">
+	      	<!-- 企业客户登录  -->
+	       <form style="left: -292px;" action="/user/ajaxlogin/" method="post" class="login-box">
+	          <div class="control relative">
+	            <input name="user_login" class="text input-xlarge" placeholder="邮箱/手机号"  type="text">
+	          </div>
+	          <div class="control relative">
+	            <input name="user_pwd" value="" class="text input-xlarge" placeholder="密码"  type="password">
+	          </div>
+	          <div class="controls clearfix">
+	            <label><input style="display: none;" name="chk_remember_pwd" checked="checked" type="checkbox" value="on">
+	            <i style="margin: 0px;" class="checkboxui checkboxui-checked" data-name="chk_remember_pwd"></i>&nbsp;下次自动登录</label>
+	            <a href="http://www.liepin.com/passport/forgetPwd?user_kind=0" target="_blank">忘记密码？</a>
+	          </div>
+	          <input value="登 录" class="btn btn-login" type="submit">
+	          <p class="info-box">还没有求职者帐号？<a href="javascript:;" title="注册solo" data-selector="switchRegister">立即注册</a></p>
+	       </form>
+	        <!-- 企业客户注册 -->
+	       <form style="left: 0px;" action="/user/regc/reguserc/?validrandflag=1" method="post" class="register-box">
+	          <div class="control">
+	            <input autocomplete="off" name="web_user.user_login" placeholder="邮箱/手机号" class="text input-xlarge" data-selector="checkEmail"  type="text">
+	          </div>
+	          <div class="control">
+	            <input autocomplete="off" name="web_user.user_pwd" value="" placeholder="密码(6-16字母、数字、无空格)" class="text input-xlarge"  type="password">
+	          </div>
+	          <div class="control" data-selector="email-code-wrap">
+	            <input autocomplete="off" name="rand" placeholder="验证码" class="text input-xlarge span2" type="text">
+	            <img src="/Solo_web/img/code_test.png" alt="验证码,看不清楚?请点击刷新验证码" class="validcode">
+	            <a href="javascript:;" data-selector="changeValidCode" class="changecode">换一张</a>
+	          </div>
+	          <div class="control hide" data-selector="phone-code-wrap">
+	            <input autocomplete="off" disabled="disabled" name="rand" placeholder="验证码" class="text input-xlarge span2" type="text">
+	            <a data-selector="phone-code-btn" href="javascript:;" class="btn btn-primary btn-phone-code">获取验证码</a>
+	          </div>
+	          <input value="免费注册" class="btn btn-register" type="submit">
+	          <div class="clearfix controls">
+	            <label><input style="display: none;" class="input-checkbox" checked="checked" type="checkbox" value="on">
+	            <i style="margin: 0px;" class="checkboxui checkboxui-checked" data-name=""></i>&nbsp;接受</label>
+	            <a href="http://www.liepin.com/user/agreement.shtml" class="xieyi" target="_blank">用户服务协议</a>
+	            <p>已有帐号,&nbsp;&nbsp;<a href="javascript:;" title="登录猎聘网" data-selector="switchLogin">马上登录</a></p> 
+	          </div>
+	       </form>
 	      </div>
-      </div>
-     -->
-      <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
-      <script src="/Solo_web/js/jquery.js"></script>
-      <!-- 包括所有已编译的插件 -->
-      <script src="/Solo_web/tools/bootstrap/js/bootstrap.js"></script>
-      <script src="/Solo_web/js/header.js"></script>
+	      
+	      <div style="left: -584px;" class="hunter">
+		      <!-- 猎头登录 -->
+	       <form style="left: -292px;" action="/user/ajaxlogin/" method="post" class="login-box" autocomplete="off">
+	          <div class="control">
+	            <input name="user_login" class="text input-xlarge" placeholder="邮箱"  type="text">
+	          </div>
+	          <div class="control">
+	            <input name="user_pwd" value="" class="text input-xlarge" placeholder="密码" type="password">
+	          </div>
+	          <div class="controls clearfix">
+	            <label>
+	            <input style="display: none;" name="chk_remember_pwd" value="on" checked="checked" type="checkbox" value="on">	           
+	            <i style="margin: 0px;" class="checkboxui checkboxui-checked" data-name="chk_remember_pwd"></i>&nbsp;下次自动登录</label>
+	            <a href="http://www.liepin.com/passport/forgetPwd/?user_kind=2" target="_blank">忘记密码？</a>
+	          </div>
+	          <input value="登录" class="btn btn-login" type="submit">
+	          <p class="info-box">还没有猎头帐号？<a href="javascript:;" title="注册猎聘网" data-selector="switchRegister">立即注册</a></p>
+	       </form>
+	        <!-- 猎头注册 -->
+	       <form style="left: 0px;" action="/user/ajaxregh" method="post" class="register-box" autocomplete="off">
+	          <div class="control">
+	            <input name="h_name" placeholder="请填写中文真实姓名" class="text input-xlarge" type="text">
+	          </div>
+	          <div class="control">
+	            <input name="user_login" placeholder="邮箱" class="text input-xlarge" type="text">
+	          </div>
+	          <div class="control">
+	            <input name="user_pwd" value="" placeholder="密码(6-16字母、数字、无空格)" class="text input-xlarge" type="password">
+	          </div>
+	          <div class="control">
+	            <input name="h_tel" placeholder="手机号码" class="text input-xlarge" type="text">
+	          </div>
+	          <input value="注册" class="btn btn-register" type="submit">
+	          <div class="clearfix controls">
+	            <label><input style="display: none;" class="input-checkbox" checked="checked" type="checkbox" value="on">
+	            <i style="margin: 0px;" class="checkboxui checkboxui-checked" data-name=""></i>&nbsp;接受</label>
+	            <a href="http://www.liepin.com/user/agreement.shtml" class="xieyi" target="_blank">用户服务协议</a>
+	            <p>已有帐号,&nbsp;&nbsp;<a href="javascript:;" title="登录猎聘网" data-selector="switchLogin">马上登录</a></p> 
+	          </div>
+	       </form>
+	      </div>
+
+	      <div style="left: 0px;" class="business">
+	      	<!-- 企业登录 -->
+	       <form style="left: -292px;" action="/user/ajaxlogin/" method="post" class="login-box">
+	          <div class="control">
+	            <input name="user_login" class="text input-xlarge" placeholder="用户名"  type="text">
+	          </div>
+	          <div class="control">
+	            <input name="user_pwd" value="" class="text input-xlarge" placeholder="密码" type="password">
+	          </div>
+	          <div class="controls clearfix">
+	            <label><input style="display: none;" name="chk_remember_pwd" value="on" checked="checked" type="checkbox">
+	            <i style="margin: 0px;" class="checkboxui checkboxui-checked" data-name="chk_remember_pwd"></i>&nbsp;下次自动登录</label>
+	            <a href="http://www.liepin.com/passport/forgetPwd/?user_kind=1" target="_blank">忘记密码？</a>
+	          </div>
+	          <input value="登录" class="btn btn-login" type="submit">
+	          <p class="info-box">还没有企业帐号？<a href="javascript:;" title="注册猎聘网" data-selector="switchRegister">立即注册</a></p>
+	       </form>
+	      	<!-- 企业注册 -->
+	       <form style="left: 0px;" action="/user/ajaxrege" method="post" class="register-box">
+	          <div class="control">
+	            <input name="web_user.user_login" placeholder="用户名" class="text input-xlarge" type="text">
+	          </div>
+	          <div class="control">
+	            <input name="web_user.user_pwd" value="" placeholder="密码(6-16字母、数字、无空格)" class="text input-xlarge" type="password">
+	          </div>
+	          <div class="control">
+	            <input name="web_user.user_email" placeholder="邮箱" class="text input-xlarge" type="text">
+	          </div>
+	          <div class="control">
+	            <span class="codebox" style="position:relative">
+	              <input name="rand" placeholder="验证码" class="text input-xlarge span2" type="text">
+	            </span>
+	            <img src="/Solo_web/img/code_test.png" alt="验证码,看不清楚?请点击刷新验证码" class="validcode">
+	            <a href="javascript:;" data-selector="changeValidCode" class="changecode">换一张</a>
+	          </div>
+	          <input value="注册" class="btn btn-register" type="submit">
+	          <div class="clearfix controls">
+	            <label><input style="display: none;" class="input-checkbox" checked="checked" type="checkbox" value="on">
+	            <i style="margin: 0px;" class="checkboxui checkboxui-checked" data-name=""></i>&nbsp;接受</label>
+	            <a href="http://www.liepin.com/user/agreement.shtml" class="xieyi" target="_blank">用户服务协议</a>
+	            <p>已有帐号,&nbsp;&nbsp;<a href="javascript:;" title="登录猎聘网" data-selector="switchLogin">马上登录</a></p> 
+	          </div>
+	        </form>
+	      </div>
+	    </div> 
+	  </div>
+	  <!--
+	  <div class="micro-box">
+	    <p class="new-tip">新</p>
+	    <div class="micro-content">
+	      <img src="%E7%8C%8E%E8%81%98%E7%BD%91_files/offer-code.png" alt="扫一扫，手机查看 猎聘送机票">
+	      <p>扫一扫，手机查看<br>猎聘送机票</p>  
+	    </div>
+	  </div>
+	  -->
+	</div>
+	
+	
+	<footer id="footer-p-beta2">
+	  <hr>
+	  <div class="wrap">
+	    <div class="copyright">
+	      <div class="copy-side">
+	        服务热线 (免长话费)<br><strong>400-8888-888</strong><br><small>工作日 9:00-19:00</small>
+	      </div>
+	      <div class="copy-main">
+	        <div class="item">
+	          <dl>
+	            <dt>简介</dt>
+	            <dd><a href="#" target="_blank" rel="nofollow">XXX网简介</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">产品服务</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">创新优势</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">友情链接</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">联系我们</a></dd>
+	          </dl>
+	        </div>
+	        <div class="item">
+	          <dl>
+	            <dt>帮助</dt>
+	            <dd><a href="#" target="_blank" rel="nofollow">经理人帮助</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">用户注册</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">关于您的简历</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">关于猎头</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">关于职位</a></dd>
+	          </dl>
+	        </div>
+	        <div class="item">
+	          <dl>
+	            <dt>共赢</dt>
+	            <dd><a href="#" target="_blank" rel="nofollow">网站合作</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">用户协议</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">网站地图</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">意见反馈</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">加入猎聘网</a></dd>
+	          </dl>
+	        </div>
+	        <div class="item">
+	          <dl>
+	            <dt>导航</dt>
+	            <dd><a href="#" target="_blank" rel="nofollow">地图首页</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">城市分类</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">行业分类</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">职能分类</a></dd>
+	            <dd><a href="#" target="_blank" rel="nofollow">企业名录</a></dd>
+	          </dl>
+	        </div>
+	        <!--  
+	        <div class="item item-weibo">
+	          <a href="http://weibo.com/lietouwang" target="_blank" rel="nofollow"><i class="weibo"></i></a>
+	          <p>猎聘微博</p>
+	          <a class="btn-sina" href="http://weibo.com/lietouwang" target="_blank" rel="nofollow"></a>
+	        </div>
+	        <div class="item item-apps">
+	          <i class="mishu"></i>
+	          <p>猎聘同道APP</p>
+	        </div>
+	        -->
+	      </div>
+	    </div>
+	  </div>
+	  <div class="copy-footer">
+	    <p>京ICP备0000000号 京ICP证000000号 人才服务许可证:000000000 </p>
+	    <p>Copyright©2000-2015 xxxx.com All Rights Reserved</p>
+	  </div>
+	</footer>
+    </div> 
+     
+	<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+	<script src="/Solo_web/js/jquery.js"></script>
+	<!-- 包括所有已编译的插件 -->
+	<script src="/Solo_web/tools/bootstrap/js/bootstrap.js"></script>
+	   
+	<script src="/Solo_web/js/lt.js"></script>
+	<script src="/Solo_web/js/home.js"></script>
+	<script src="/Solo_web/js/login.js"></script>
+     
+	  
    </body>
 </html>
