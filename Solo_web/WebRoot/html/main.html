@@ -15,11 +15,11 @@
       <link href="/Solo_web/tools/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
+    <link href="/Solo_web/css/login/main.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="/Solo_web/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -47,6 +47,22 @@
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Help</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+				<li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -76,6 +92,35 @@
             <li><a href="">One more nav</a></li>
             <li><a href="">Another nav item</a></li>
           </ul>
+         <nav id="main-nav">
+			<div class="navigation">
+			<ul class="nav nav-stacked">
+				<li>
+					<a class="dropdown-collapse" href="javascript:void(0);" url="">
+	                    <b class="icon-dropbox"></b>
+	                    <span>应用管理</span>
+	                    <i class="icon-angle-down angle-down" style="float:right;line-height: 40px;margin-right: 0;"></i>
+	                </a>	
+	    			<ul class="nav nav-stacked">
+	    				
+	    					<li>
+								<a class="child" href="javascript:void(0);" url="pub/applytype.html">
+			                    <i class="icon-caret-right"></i>
+			                    <span>应用分类维护</span>
+	                			</a>	
+	                		</li>
+	    				
+	    					<li>
+								<a class="child" href="javascript:void(0);" url="pub/apply.html">
+			                    <i class="icon-caret-right"></i>
+			                    <span>应用维护</span>
+	                			</a>	
+	                		</li>
+	    			</ul>
+    			</li>
+    		</ul>
+    		</div>
+    	</nav>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Dashboard</h1>
@@ -242,8 +287,8 @@
       <script src="/Solo_web/js/jquery.js"></script>
       <!-- 包括所有已编译的插件 -->
       <script src="/Solo_web/tools/bootstrap/js/bootstrap.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+    <script src="/Solo_web/js/login/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/Solo_web/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

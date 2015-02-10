@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.solo.service.test.IMyTest;
 
+/**
+ * 
+ * @author zbx
+ *
+ */
 @Controller
 @RequestMapping(value="/mytest")
 public class MyTestCon {

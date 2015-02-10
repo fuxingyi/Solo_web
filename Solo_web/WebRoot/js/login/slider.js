@@ -27,11 +27,4 @@ $(function(){
 		a+="></a>";
 		l.html(a).find("a").click(function(){
 			var e=$(this).index();d=e,clearTimeout(g),i(e,function(){r()})}),r()}()
-		});
-
-//		$(function(){LT.File.Js.load("/r/183243/p/beta2/js/page/slide.guider.js",function(){!LT.User.user_login&&1!=LT.Cookie.get("slide_guide_home")&&LT.File.Js.load("/r/183243/p/beta2/js/page/slide.guider.js",function(){slideGuider({second:3,close:function(){LT.Cookie.set("slide_guide_home","1")}})})})}),
-//		tlog=window.tlog||[],
-		
-//		tlog.push("s:wwwindex_new"),
-		
-//		$(function(){$(".candidate .register-box .btn-register").bind("click",function(){tlog=window.tlog||[],tlog.push("c:w_box_register_c_new")})});
+});
