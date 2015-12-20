@@ -48,9 +48,9 @@
 	</bean>
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/solo_web"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value="root"></property>
+		<property name="url" value="jdbc:mysql://192.168.52.131:3306/solo_web"></property>
+		<property name="username" value="solo_web"></property>
+		<property name="password" value="soloWeb_1"></property>
 		<!--改成你的密码 -->
 	</bean>
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
