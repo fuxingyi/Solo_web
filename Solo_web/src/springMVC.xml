@@ -17,28 +17,7 @@
 	<mvc:annotation-driven />
 	<!-- spring mvc扫描的包路径 -->
 	<context:component-scan base-package="com.solo" />
-	<!-- spring mvc对视图名解析 -->
-	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
-		<property name="prefix" value="/WEB-INF/views/" /> <property name="suffix" 
-		value=".jsp" /> </bean> -->
-	<!-- 数据源配置 -->
-	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
-		destroy-method="close"> <property name="driverClassName" value="${pom.jdbc.driver}" 
-		/> <property name="url" value="${pom.jdbc.url}" /> <property name="username" 
-		value="${pom.jdbc.username}" /> <property name="password" value="${pom.jdbc.password}" 
-		/> <property name="initialSize" value="10" /> <property name="maxActive" 
-		value="2000" /> <property name="maxWait" value="60000" /> <property name="maxIdle" 
-		value="20" /> <property name="minIdle" value="10" /> <property name="defaultAutoCommit" 
-		value="true" /> <property name="removeAbandoned" value="true" /> <property 
-		name="removeAbandonedTimeout" value="180" /> </bean> -->
-	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> 
-		<property name="dataSource" ref="dataSource" /> <property name="packagesToScan" 
-		value="com.yonyou" /> <property name="hibernateProperties"> <props> <prop 
-		key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> <prop key="hibernate.show_sql">true</prop> 
-		<prop key="hibernate.format_sql">true</prop> <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop> 
-		解决MySQL的连接闲置8小时超时问题 <prop key="hibernate.autoReconnect">true</prop> <prop 
-		key="hibernate.autoReconnectForPools">true</prop> <prop key="hibernate.is-connection-validation-required">true</prop> 
-		</props> </property> </bean> -->
+	
 
 	<!-- Add this tag to enable annotations transactions -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
@@ -56,11 +35,7 @@
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	<!-- <bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> 
-		<property name="defaultErrorView" value="error"></property> <property name="exceptionAttribute" 
-		value="ex"></property> <property name="exceptionMappings"> <props> <prop 
-		key="IOException">error/ioexp</prop> <prop key="java.sql.SQLException">error/sqlexp</prop> 
-		</props> </property> </bean> -->
+	
 
 		<!--- StringHttpMessageConverter bean -->
 	<bean id="stringHttpMessageConverter"
@@ -81,5 +56,41 @@
 			</list>
 		</property>
 	</bean>
+	<!--  
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:memcached.properties</value>
+		</property>
+	</bean>
+	-->
+	
+	<bean id="sockIOPool" class="com.danga.MemCached.SockIOPool"  
+        factory-method="getInstance" init-method="initialize" destroy-method="shutDown" lazy-init="false">  
+        <constructor-arg>  
+            <value>neeaMemcachedPool</value>  
+        </constructor-arg>  
+        <property name="servers">  
+            <list>  
+                <value>192.168.52.131:11211</value>  
+            </list>  
+        </property>  
+        <property name="initConn" value="5"/>  
+        <property name="minConn" value="5"/>
+        <property name="maxConn" value="25"/>  
+        <property name="maintSleep" value="30" />  
+        <property name="nagle" value="false"/>
+        <property name="socketTO" value="3000" />  
+    </bean>  
+  
+    <bean id="memcachedClient" class="com.danga.MemCached.MemCachedClient">  
+    	<constructor-arg>  
+            <value>neeaMemcachedPool</value>  
+        </constructor-arg> 
+        <!-- 
+        <property name="compressEnable" value="true" />  
+        <property name="compressThreshold" value="4096"/>  
+        -->
+    </bean>  
 
 </beans>
