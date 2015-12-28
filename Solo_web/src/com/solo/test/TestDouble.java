@@ -1,7 +1,7 @@
 package com.solo.test;
 
 public class TestDouble {
-	public static void main(String[] args) {
+	 public static void main(String[] args) {
 		Double dd = new Double(0.000000000000000000000000001);
 		double ddd = 19999999999999999998.0;
 		Float ff = new Float(16777217.0);
@@ -13,3 +13,4 @@ public class TestDouble {
 		System.out.println(new Double(0.01));
 	}
 }
+   
